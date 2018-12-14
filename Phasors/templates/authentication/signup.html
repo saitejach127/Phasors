@@ -12,7 +12,7 @@
 	lastname: <input type="text" name="lastname">
 	email: <input type="email" name="email">
 	password: <input type="password" name="password1" id="p1">
-	re password : <input type="password" name="password2" id="p2">
+	password(again): <input type="password" name="password2" id="p2">
 	<input type="submit" name="submit">
 	{{error}}
 </form>
@@ -22,9 +22,10 @@
 	p1.onclick = function(){
 		if(p1.value != p2.value){
 			var para = document.getElementById("para");
-			para.innerHTML = "not matched";
+			para.innerHTML = "Passwords Don't Match!";
 		} 
 	}
 </script>
 </body>
 </html>
+

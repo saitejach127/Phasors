@@ -38,7 +38,7 @@ def signup(request):
 		login(request, user)
 
 		return redirect("/")
-	return render(request, "authentication/signup.html", response)
+	return render(request, "authentication/login1.html", response)
 
 def signout(request):
 	logout(request)
@@ -57,10 +57,10 @@ def signin(request):
 				user = User.objects.get(email=username)
 				username = user.username
 			except:
-				return render(request, "authentication/login.html", {"error" : "no account"})
+				return render(request, "authentication/login1.html", {"error" : "no account"})
 		password = request.POST["password"]
 		user = authenticate(username=username, password=password)
 		login(request, user)
 		return redirect("/")
 
-	return render(request,"authentication/login.html")
+	return render(request,"authentication/signin.html")
