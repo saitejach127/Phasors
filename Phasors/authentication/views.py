@@ -50,10 +50,14 @@ def signin(request):
 	if request.method == "POST":
 		username = request.POST["username"]
 		try:
-			user = User.objects.get(email=username)
+			user = User.objects.get(username=username)
 			username = user.username
 		except:
-			return render(request, "authentication/login.html", {"error" : "no account"})
+			try:
+				user = User.objects.get(email=username)
+				username = user.username
+			except:
+				return render(request, "authentication/login.html", {"error" : "no account"})
 		password = request.POST["password"]
 		user = authenticate(username=username, password=password)
 		login(request, user)
