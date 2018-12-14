@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Sign up</title>
+</head>
+<body>
+<form method="POST" action="/auth/signup/">
+	{% csrf_token %}
+	username: <input type="text" name="username">
+	firstname: <input type="text" name="firstname">
+	lastname: <input type="text" name="lastname">
+	email: <input type="email" name="email">
+	password: <input type="password" name="password1" id="p1">
+	re password : <input type="password" name="password2" id="p2">
+	<input type="submit" name="submit">
+	{{error}}
+</form>
+<script type="text/javascript">
+	var p1 = document.getElementById("p1");
+	var p2 = document.getElementById("p2");
+	p1.onclick = function(){
+		if(p1.value != p2.value){
+			var para = document.getElementById("para");
+			para.innerHTML = "not matched";
+		} 
+	}
+</script>
+</body>
+</html>
