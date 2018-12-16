@@ -33,7 +33,6 @@ def portal(request):
 	else :
 		return render(request, "pages/studentportal.html")
 
-
 def contactus(request):
 	response = {}
 	if request.method == 'POST' :
@@ -56,3 +55,15 @@ def contactus(request):
 		    print 'error sending message'
 		    response['error'] = 'Error sending Message , Sorry !!!'
 	return redirect('/')
+
+
+def tips(request):
+	data = {}
+	if request.user.is_authenticated() :
+		tip = Tips.objects.all()
+		data['tips'] = tip
+	else:
+		tip = Tips.objects.filter(login_required = False)
+		data["tips"] = tip
+	
+	return render(request,"pages/tips&tricks.html",data)

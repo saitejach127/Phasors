@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Tips & Tricks</title>
+	<link rel="icon" type="image/png" href="{% static 'images/favicon.ico' %}">
+</head>
+<body>
+{% for tip in tips %}
+<h1>{{tip.title}}</h1>
+
+<p>{{tip.data}}</p>
+{% endfor %}
+</body>
+</html>
