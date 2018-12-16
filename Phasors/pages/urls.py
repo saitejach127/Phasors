@@ -3,4 +3,5 @@ import views
 
 urlpatterns = [
 	url(r"^$", views.home),
+	url(r'^portal/$', views.portal),
 ]
