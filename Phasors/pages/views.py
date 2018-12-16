@@ -30,3 +30,14 @@ def portal(request):
 		return render(request, "pages/mentorportal.html")
 	else :
 		return render(request, "pages/studentportal.html")
+
+
+def tips(request):
+	data = {}
+	if request.user.is_authenticated() :
+		tip = Tips.objects.all()
+		data['tips'] = tip
+	else:
+		tip = Tips.objects.get(logIn = False)
+	
+	return render(request,"pages/tips&tricks.html",data)
