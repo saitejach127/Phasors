@@ -62,4 +62,4 @@ def signin(request):
 		login(request, user)
 		return redirect("/")
 
-	return render(request,"authentication/signin.html")
+	return render(request,"authentication/login1.html")
