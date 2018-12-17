@@ -10,3 +10,6 @@ class Tips(models.Model):
 	data = models.TextField()
 	login_required = models.BooleanField(default=False)
 
+	def __str__(self):
+		return self.title
+
