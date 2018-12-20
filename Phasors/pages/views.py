@@ -44,16 +44,16 @@ def contactus(request):
 		Content = Content + 'Email : ' + email + '\n\n'
 		Content = Content + 'Message : ' + message + '\n\n'
 	    
-		receiver = "saime0070@gmail.com"
-		sender = "saime0070@gmail.com"
+		receiver = "chsaiteja@student.nitw.ac.in"
+		sender = "chsaiteja@student.nitw.ac.in"
 		rlist = []
 		rlist.append(receiver)
-		try:
-			send_mail('IG Connect Contact Us Message',Content,sender,rlist,fail_silently=False,)
-			return redirect('/')
-		except :
-		    print 'error sending message'
-		    response['error'] = 'Error sending Message , Sorry !!!'
+		# try:
+		send_mail('IG Connect Contact Us Message',Content,sender,rlist,fail_silently=False,)
+		return redirect('/')
+		# except :
+		#     print 'error sending message'
+		#     response['error'] = 'Error sending Message , Sorry !!!'
 	return redirect('/')
 
 

@@ -9,7 +9,7 @@ from .models import *
 
 def signup(request):
 	response = {}
-	print "in"
+	response["type"] = "Student Login"
 	if request.user.is_authenticated() and request.user.is_active :
 		return redirect("/")
 
@@ -44,6 +44,8 @@ def signout(request):
 	return redirect("/")
 
 def signin(request):
+	response = {}
+	response["type"] = "Student Login"
 	if request.user.is_authenticated() and request.user.is_active :
 		return redirect("/")
 	if request.method == "POST":
@@ -63,11 +65,11 @@ def signin(request):
 		return redirect("/")
 
 
-	return render(request,"authentication/login1.html")
+	return render(request,"authentication/login1.html", response)
 
 def signupmentor(request):
 	response = {}
-	print "in"
+	response["type"] = "Mentor Login"
 	if request.user.is_authenticated() and request.user.is_active :
 		return redirect("/")
 
