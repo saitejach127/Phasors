@@ -58,12 +58,14 @@ def contactus(request):
 
 
 def tips(request):
-	data = {}
+	response = {}
 	if request.user.is_authenticated() :
 		tip = Tips.objects.all()
-		data['tips'] = tip
+		response['tips'] = tip
+		response["auth"] = True
 	else:
 		tip = Tips.objects.filter(login_required = False)
-		data["tips"] = tip
+		response["tips"] = tip
+		response["auth"] = False
 	
-	return render(request,"pages/tips&tricks.html",data)
+	return render(request,"pages/tips&tricks.html",response)
