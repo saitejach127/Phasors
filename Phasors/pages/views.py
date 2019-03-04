@@ -44,7 +44,7 @@ def contactus(request):
 		Content = Content + 'Email : ' + email + '\n\n'
 		Content = Content + 'Message : ' + message + '\n\n'
 	    
-		receiver = "chsaiteja@student.nitw.ac.in"
+		receiver = "phasorsedu@gmail.com"
 		sender = "chsaiteja@student.nitw.ac.in"
 		rlist = []
 		rlist.append(receiver)
