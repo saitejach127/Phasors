@@ -26,7 +26,7 @@ SECRET_KEY = '=)5yrpd06$&79m81+$^qf+k+6l+@y316i6j&2nkpz95zd27ze_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -78,12 +78,8 @@ WSGI_APPLICATION = 'Phasors.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Phasor_db',
-        'USER' : 'phasor',
-        'PASSWORD' : 'Phasor@123',
-        'HOST' : 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
