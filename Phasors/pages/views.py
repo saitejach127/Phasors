@@ -43,7 +43,7 @@ def contactus(request):
 		Content = 'Name : ' + name + '\n\n'
 		Content = Content + 'Email : ' + email + '\n\n'
 		Content = Content + 'Message : ' + message + '\n\n'
-	    
+
 		receiver = "phasorsedu@gmail.com"
 		sender = "chsaiteja@student.nitw.ac.in"
 		rlist = []
@@ -67,5 +67,8 @@ def tips(request):
 		tip = Tips.objects.filter(login_required = False)
 		response["tips"] = tip
 		response["auth"] = False
-	
+
 	return render(request,"pages/tips&tricks.html",response)
+
+def comingSoon(request):
+	return render(request,'pages/comingSoon.html',{})
