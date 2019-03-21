@@ -1,2 +1,4 @@
 Phasors/db.sqlite3
 phasor/
+*.pyc
+Phasors/Phasors/settings.py
