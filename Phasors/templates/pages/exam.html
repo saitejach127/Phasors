@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Exam</title>
+</head>
+<body>
+<form method="POST" action="/practice/">
+	{% csrf_token %}
+	{% if zipped %}
+		{% for question,answer in zipped %}
+			<p>{{question.question}}</p>
+			<input type="radio" name="{{question.pk}}" value="op1">{{question.op1}} <br>
+			<input type="radio" name="{{question.pk}}" value="op2">{{question.op2}} <br>
+			<input type="radio" name="{{question.pk}}" value="op3">{{question.op3}} <br>
+			<input type="radio" name="{{question.pk}}" value="op4">{{question.op4}} <br>
+			<hr>
+
+			{% if answer.correct %}
+				<h1>Good Job</h1>
+			{% else %}
+				<h1>{{question.answer}}</h1>
+				<h1>Give me a blow job</h1>
+			{% endif %}
+			
+		{% endfor %}
+	{% else %}
+		{% for question in questions %}
+			<p>{{question.question}}</p>
+				<input type="radio" name="{{question.pk}}" value="op1">{{question.op1}} <br>
+				<input type="radio" name="{{question.pk}}" value="op2">{{question.op2}} <br>
+				<input type="radio" name="{{question.pk}}" value="op3">{{question.op3}} <br>
+				<input type="radio" name="{{question.pk}}" value="op4">{{question.op4}} <br>
+				<hr>
+				<input type="submit" name="submit">
+		{% endfor %}
+	{% endif %}
+	
+</form>
+</body>
+</html>

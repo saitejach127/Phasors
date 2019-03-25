@@ -72,3 +72,23 @@ def tips(request):
 
 def comingSoon(request):
 	return render(request,'pages/comingSoon.html',{})
+
+def quiz(request):
+	response = {}
+	questions = Question.objects.all()
+	response["questions"] = questions	
+	if request.method == "POST":
+		score = 0
+		answer = []
+		for qes in questions:
+			r = {}
+			r['correct'] = False
+			r['ans'] = request.POST[str(qes.pk)]
+			if qes.answer == request.POST[str(qes.pk)]:
+				r['correct'] = True
+				score+=1
+			answer.append(r)
+		response["answer"] = answer
+		response["zipped"] = zip(questions,answer)
+	return render(request, "pages/exam.html", response)
+
