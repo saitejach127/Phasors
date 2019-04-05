@@ -43,7 +43,7 @@ def contactus(request):
 		Content = 'Name : ' + name + '\n\n'
 		Content = Content + 'Email : ' + email + '\n\n'
 		Content = Content + 'Message : ' + message + '\n\n'
-	    
+
 		receiver = "phasorsedu@gmail.com"
 		sender = "chsaiteja@student.nitw.ac.in"
 		rlist = []
@@ -67,5 +67,28 @@ def tips(request):
 		tip = Tips.objects.filter(login_required = False)
 		response["tips"] = tip
 		response["auth"] = False
-	
+
 	return render(request,"pages/tips&tricks.html",response)
+
+def comingSoon(request):
+	return render(request,'pages/comingSoon.html',{})
+
+def quiz(request):
+	response = {}
+	questions = Question.objects.all()
+	response["questions"] = questions	
+	if request.method == "POST":
+		score = 0
+		answer = []
+		for qes in questions:
+			r = {}
+			r['correct'] = False
+			r['ans'] = request.POST[str(qes.pk)]
+			if qes.answer == request.POST[str(qes.pk)]:
+				r['correct'] = True
+				score+=1
+			answer.append(r)
+		response["answer"] = answer
+		response["zipped"] = zip(questions,answer)
+	return render(request, "pages/exam.html", response)
+
