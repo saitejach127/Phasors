@@ -74,13 +74,16 @@ WSGI_APPLICATION = 'Phasors.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# https://docs.djangoproject.com/en/1.11/ref/settings/#da
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-        'LOCATION': os.path.join(BASE_DIR, "db.sqlite3")
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Phasor_db',
+        'USER': 'phasor',
+        'PASSWORD' : 'Phasor@123',
+        'HOST' : 'localhost',
+        'PORT' : '',
     }
 }
 
