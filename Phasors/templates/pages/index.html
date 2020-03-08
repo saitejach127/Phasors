@@ -81,7 +81,7 @@
 
     <!-- home
     ================================================== -->
-    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="{% static 'images/background.png' %}" data-natural-width=3000 data-natural-height=1500 data-position-y=center>
+    <section id="home" class="s-home target-section" style="background-image: url('/static/images/background.png'); background-repeat: no-repeat; background-size: 100% 100%;" data-parallax="scroll" data-natural-width=3000 data-natural-height=1500 data-position-y=center>
 
         <div class="overlay"></div>
         <div class="shadow-overlay"></div>
@@ -468,5 +468,22 @@
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/plugins.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        // var section = document.getElementById("home");
+        // section.setAttribute("style", "background-image: url('/static/images/green.png');")
+        var section = document.getElementById("home");
+       var images = [
+           '/static/images/background.png',
+           '/static/images/PHASORS.png',
+           '/static/images/PHasors(2).png'
+       ]
+       var currentImage = 0;
+        setInterval(() => {
+            console.log("changing");
+            if(currentImage >= images.length){ currentImage = 0; }
+            section.setAttribute("style", "background-image: url('" + images[currentImage] +"'); background-repeat: no-repeat; background-size: 100% 100%;")
+            currentImage++;
+        }, 2500)
+    </script>
 </body>
 </html>
